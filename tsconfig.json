@@ -1,6 +1,7 @@
 {
-
+  "include": ["src"],
   "compilerOptions": {
+    "baseUrl": "./src",
     "target": "es5",
     "lib": [
       "dom",
@@ -21,13 +22,13 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "components": ["./src/components"],
-      "layouts": ["./src/components/layouts"],
-      "hooks": ["./src/hooks"],
-      "pages": ["./src/pages"],
-      "routes": ["./src/routes"],
-      "services": ["./src/services"],
-      "templates": ["./src/templates/"]
+      "components": ["./components"],
+      "layouts": ["./components/layouts"],
+      "hooks": ["./hooks"],
+      "pages": ["./pages"],
+      "routes": ["./routes"],
+      "services": ["./services"],
+      "templates": ["./templates/"]
     }
   },
 
