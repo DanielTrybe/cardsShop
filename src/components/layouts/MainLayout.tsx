@@ -1,11 +1,14 @@
-import { Grid } from "@mui/material";
+import { Container } from "@mui/material";
 import { Outlet } from "react-router-dom";
+import Header from "./Header/Header";
+import Menus from "./Menus/Menu";
 
 export default function MainLayout() {
   return (
-    <Grid>
-      olá aqui é o layout
+    <Container maxWidth="xl">
+      <Header />
+      <Menus />
       <Outlet />
-    </Grid>
+    </Container>
   );
 }
