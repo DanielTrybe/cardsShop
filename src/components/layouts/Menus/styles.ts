@@ -5,15 +5,26 @@ const useStyles = makeStyles({
   menu: {
     display: 'flex'
   },
+  paper: {
+    background: 'red'
+  },
+  gridMenu: {
+    position: 'relative',
+  },
+  gridItem: {
+    position: 'absolute',
+  },
+
   box: {
     display: 'flex',
-    flexDirection: 'column'
+    position: 'absolute',
+    background: 'white'
   }
 })
 
 const CustomButton = styled(Button)({
   borderRadius: 0,
-  width: '100%',
+ 
 })
 
 export {useStyles, CustomButton};

@@ -2,8 +2,13 @@ import React from "react";
 import { Grid, Box } from "@mui/material";
 import { useStyles, CustomTextField } from "./style";
 import PkmLogo from "images/pkm-tcg.png";
+import { useCardsContext } from "hooks";
 
 export default function Header() {
+  const { cardsList } = useCardsContext();
+
+  console.log(cardsList);
+
   const classes = useStyles();
   return (
     <Grid className={classes.header}>

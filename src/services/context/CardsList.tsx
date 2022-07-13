@@ -1,16 +1,20 @@
-import React, { createContext, useEffect, useState } from "react";
-import api from "../api/api";
+import React, { createContext, useEffect, useState, useContext } from "react";
+import api from "services/api/api";
+// import { CardsContextProps } from "./interface";
 
 interface CardsContextProps {
-  cardsList: any;
+  cardsList: Array<any>;
+  search: string;
+  setSearch: (value: string) => void;
 }
 
-export const CardsContext = createContext<CardsContextProps | null>(null);
+export const CardsContext = createContext({} as CardsContextProps);
 
 const CardsProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [cardsList, setCardsList] = useState([] as any);
+  const [cardsList, setCardsList] = useState<any[]>([]);
+  const [search, setSearch] = useState("" as string);
 
   useEffect(() => {
     const getCards = async () => {
@@ -26,7 +30,10 @@ const CardsProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const values = {
     cardsList,
+    search,
+    setSearch,
   };
+
   return (
     <CardsContext.Provider value={values}>{children}</CardsContext.Provider>
   );

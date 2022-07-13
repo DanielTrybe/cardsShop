@@ -34,41 +34,31 @@ export default function CustomPopover({
   };
 
   const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
 
   return (
-    <>
-      <CustomButton
-        aria-describedby={id}
-        variant="contained"
-        onClick={handleClick}
-      >
-        {label}
-      </CustomButton>
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
-      >
-        <Paper elevation={0} onMouseLeave={handleClose}>
+    <Paper elevation={1} onMouseLeave={handleClose}>
+      <Grid className={classes.gridMenu}>
+        <CustomButton variant="contained" onClick={handleClick}>
+          {label}
+        </CustomButton>
+
+        {anchorEl && (
           <Box className={classes.box}>
-            {choices.map((choice, index) => (
-              <Button
-                key={index}
-                onClick={(event) => handleSelect(event)}
-                value={choice}
-              >
-                {choice}
-              </Button>
-            ))}
+            <Grid>
+              {choices.map((choice, index) => (
+                <Button
+                  key={index}
+                  onClick={(event) => handleSelect(event)}
+                  value={choice}
+                >
+                  {choice}
+                </Button>
+              ))}
+            </Grid>
+            <Grid>VAI ESTAR COM CARD AQUI</Grid>
           </Box>
-        </Paper>
-      </Popover>
-    </>
+        )}
+      </Grid>
+    </Paper>
   );
 }
