@@ -5,9 +5,7 @@ import PkmLogo from "images/pkm-tcg.png";
 import { useCardsContext } from "hooks";
 
 export default function Header() {
-  const { cardsList } = useCardsContext();
-
-  console.log(cardsList);
+  const { search, setSearch } = useCardsContext();
 
   const classes = useStyles();
   return (
@@ -23,6 +21,8 @@ export default function Header() {
         label="Search a Card"
         id="outlined-start-adornment"
         sx={{ m: 1, width: "100%" }}
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
       />
     </Grid>
   );

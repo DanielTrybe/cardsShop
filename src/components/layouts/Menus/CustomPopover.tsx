@@ -36,9 +36,9 @@ export default function CustomPopover({
   const open = Boolean(anchorEl);
 
   return (
-    <Paper elevation={1} onMouseLeave={handleClose}>
+    <Paper style={{ width: "100%" }} elevation={1} onMouseLeave={handleClose}>
       <Grid className={classes.gridMenu}>
-        <CustomButton variant="contained" onClick={handleClick}>
+        <CustomButton fullWidth variant="contained" onClick={handleClick}>
           {label}
         </CustomButton>
 
@@ -50,6 +50,7 @@ export default function CustomPopover({
                   key={index}
                   onClick={(event) => handleSelect(event)}
                   value={choice}
+                  fullWidth
                 >
                   {choice}
                 </Button>
