@@ -22,7 +22,7 @@ const CardsProvider: React.FC<{ children: React.ReactNode }> = ({
         const response = await api.get("cards");
         setCardsList(response.data);
       } catch {
-        console.log("deuruim");
+        console.log("erro ao buscar cartas");
       }
     };
     getCards();
