@@ -2,21 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import api from "services/api/api";
 // import { CardsContextProps } from "./interface";
 
-type CardList = {
-  count: number;
-  data: Array<any>;
-  page: number;
-  pageSize: number;
-  totalCount: number;
-};
-
-interface CardsContextProps {
-  cardsList: CardList;
-  getOneCard: (card: number) => void;
-  search: string;
-  setSearch: (value: string) => void;
-  card: any;
-}
+import { CardsContextProps, CardList } from "./types";
 
 export const CardsContext = createContext({} as CardsContextProps);
 
@@ -38,7 +24,7 @@ const CardsProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const getCards = async () => {
     try {
-      const response = await api.get("cards");
+      const response = await api.get(`cards?pageSize=${10}`);
       setCardsList(response.data);
     } catch {
       console.log("erro ao buscar cartas");
