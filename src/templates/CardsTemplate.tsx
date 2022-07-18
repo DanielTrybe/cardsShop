@@ -1,4 +1,4 @@
-import { Grid, Box } from "@mui/material";
+import { Grid } from "@mui/material";
 import { useCardsContext } from "hooks";
 import { CardShow } from "components/Items";
 import { makeStyles } from "@material-ui/styles";

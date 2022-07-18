@@ -1,6 +1,5 @@
-import React, { useState } from "react";
 import { Card } from "services/context/types";
-import { Typography, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 
 import { CompactCard } from "components/Items";
 
