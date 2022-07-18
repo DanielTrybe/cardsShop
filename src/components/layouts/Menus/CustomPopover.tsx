@@ -1,19 +1,15 @@
 import React from "react";
 
-import { Popover, Grid, Box, Button, Paper } from "@mui/material";
+import { Grid, Box, Button, Paper } from "@mui/material";
 import { useStyles, CustomButton } from "./styles";
 
-type PopoverProps = {
+type Props = {
   label: string;
   onClick: (value: string) => void;
   choices: Array<string>;
 };
 
-export default function CustomPopover({
-  label,
-  choices,
-  onClick,
-}: PopoverProps) {
+export default function CustomPopover({ label, choices, onClick }: Props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
@@ -33,7 +29,7 @@ export default function CustomPopover({
     handleClose();
   };
 
-  const open = Boolean(anchorEl);
+  // const open = Boolean(anchorEl);
 
   return (
     <Paper style={{ width: "100%" }} elevation={1} onMouseLeave={handleClose}>

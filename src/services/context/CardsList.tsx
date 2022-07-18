@@ -1,37 +1,46 @@
-import React, { createContext, useEffect, useState, useContext } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import api from "services/api/api";
 // import { CardsContextProps } from "./interface";
 
-interface CardsContextProps {
-  cardsList: Array<any>;
-  search: string;
-  setSearch: (value: string) => void;
-}
+import { CardsContextProps, CardList } from "./types";
 
 export const CardsContext = createContext({} as CardsContextProps);
 
 const CardsProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [cardsList, setCardsList] = useState<any[]>([]);
+  const [cardsList, setCardsList] = useState({} as CardList);
+  const [card, setCard] = useState({} as any);
   const [search, setSearch] = useState("" as string);
 
+  const getOneCard = async (cardID: number) => {
+    try {
+      const response = await api.get(`cards/${cardID}`);
+      setCard(response.data);
+    } catch {
+      console.log("erro ao buscar carta");
+    }
+  };
+
+  const getCards = async () => {
+    try {
+      const response = await api.get(`cards?pageSize=${10}`);
+      setCardsList(response.data);
+    } catch {
+      console.log("erro ao buscar cartas");
+    }
+  };
+
   useEffect(() => {
-    const getCards = async () => {
-      try {
-        const response = await api.get("cards");
-        setCardsList(response.data);
-      } catch {
-        console.log("deuruim");
-      }
-    };
     getCards();
   }, []);
 
   const values = {
     cardsList,
+    getOneCard,
     search,
     setSearch,
+    card,
   };
 
   return (

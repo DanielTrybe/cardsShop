@@ -1,3 +1,9 @@
+### Readme em construção 
+
+# Projeto para praticar TypeScript
+
+Consiste em uma aplicação que contém páginas de login, gestão e pedidos.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
