@@ -7,10 +7,11 @@ const useStyles = makeStyles({
   cards: {
     display: "flex",
     flexWrap: "wrap",
-    alignItems: "center",
+
     justifyContent: "center",
     gap: 10,
     padding: 5,
+    marginTop: 5,
   },
 });
 
