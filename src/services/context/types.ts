@@ -107,6 +107,7 @@ export type CardList = {
 
 export type Card = {
   card: DataCards;
+  children?: JSX.Element;
 };
 
 export interface CardsContextProps {

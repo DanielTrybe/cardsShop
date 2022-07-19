@@ -2,7 +2,7 @@ import React from "react";
 import { Typography, Grid, Popover } from "@mui/material";
 import { Card } from "services/context/types";
 
-function PopoverCustom({ card }: Card) {
+function PopoverCustom({ card, children }: Card) {
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
 
   const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -44,27 +44,7 @@ function PopoverCustom({ card }: Card) {
         onClose={handlePopoverClose}
         disableRestoreFocus
       >
-        <Typography style={{ padding: 5 }}>
-          {card.attacks.map((attack) => (
-            <Grid
-              style={{
-                border: "1px solid lightgray",
-                borderRadius: 5,
-                marginBottom: 5,
-              }}
-            >
-              <Typography sx={{ p: 1 }}>
-                {attack.name} -{" "}
-                {attack.cost.map((cost) => (
-                  <span>{cost} </span>
-                ))}{" "}
-                {attack.damage ? `- ${attack.damage}` : ""}
-              </Typography>
-
-              <Typography sx={{ p: 1 }}>{attack.text}</Typography>
-            </Grid>
-          ))}
-        </Typography>
+        {children}
       </Popover>
     </div>
   );
