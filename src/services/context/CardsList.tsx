@@ -14,6 +14,7 @@ const CardsProvider: React.FC<{ children: React.ReactNode }> = ({
   const [search, setSearch] = useState("" as string);
 
   const getOneCard = async (cardID: number) => {
+    // busca um card
     try {
       const response = await api.get(`cards/${cardID}`);
       setCard(response.data);
@@ -23,6 +24,7 @@ const CardsProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const getCards = async () => {
+    // busca todas cardas com filtros
     try {
       const response = await api.get(`cards?pageSize=${10}`);
       setCardsList(response.data);
