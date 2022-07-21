@@ -15,6 +15,30 @@ import { Card as CardType } from "services/context/types";
 import { PopoverCustom } from "components/Items";
 
 function CompactCard({ card }: CardType) {
+  const content = (
+    <Typography style={{ padding: 5 }}>
+      {card.attacks.map((attack) => (
+        <Grid
+          style={{
+            border: "1px solid lightgray",
+            borderRadius: 5,
+            marginBottom: 5,
+          }}
+        >
+          <Typography sx={{ p: 1 }}>
+            {attack.name} -{" "}
+            {attack.cost.map((cost) => (
+              <span>{cost} </span>
+            ))}{" "}
+            {attack.damage ? `- ${attack.damage}` : ""}
+          </Typography>
+
+          <Typography sx={{ p: 1 }}>{attack.text}</Typography>
+        </Grid>
+      ))}
+    </Typography>
+  );
+
   return (
     <Paper elevation={2}>
       <Card sx={{ maxWidth: 345 }}>
@@ -41,14 +65,8 @@ function CompactCard({ card }: CardType) {
           </Typography>
         </CardContent>
 
-        {/* <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton> */}
         <Grid style={{ textAlign: "center", marginBottom: 10 }}>
-          <PopoverCustom card={card} />
+          <PopoverCustom card={card} children={content} />
         </Grid>
       </Card>
     </Paper>
