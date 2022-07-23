@@ -2,9 +2,14 @@ import React, { createContext, useEffect, useState } from "react";
 import api from "services/api/api";
 // import { CardsContextProps } from "./interface";
 
-import { CardsContextProps, CardList } from "./types";
+import { CardsContextProps, CardList, PageAndSize } from "./types";
 
 export const CardsContext = createContext({} as CardsContextProps);
+
+const initialize = {
+  page: 1,
+  size: 10,
+};
 
 const CardsProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -12,6 +17,7 @@ const CardsProvider: React.FC<{ children: React.ReactNode }> = ({
   const [cardsList, setCardsList] = useState({} as CardList);
   const [card, setCard] = useState({} as any);
   const [search, setSearch] = useState("" as string);
+  const [pageAndSize, setPageAndSize] = useState(initialize as PageAndSize);
 
   const getOneCard = async (cardID: number) => {
     // busca um card
@@ -26,7 +32,9 @@ const CardsProvider: React.FC<{ children: React.ReactNode }> = ({
   const getCards = async () => {
     // busca todas cardas com filtros
     try {
-      const response = await api.get(`cards?pageSize=${10}`);
+      const response = await api.get(
+        `cards?pageSize=${pageAndSize.size}&page=${pageAndSize.page}`
+      );
       setCardsList(response.data);
     } catch {
       console.log("erro ao buscar cartas");
