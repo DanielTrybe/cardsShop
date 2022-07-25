@@ -121,4 +121,6 @@ export interface CardsContextProps {
   search: string;
   setSearch: (value: string) => void;
   card: any;
+  getCards: () => void;
+  loading: boolean;
 }
