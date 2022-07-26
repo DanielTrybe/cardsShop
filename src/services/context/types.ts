@@ -110,10 +110,17 @@ export type Card = {
   children?: JSX.Element;
 };
 
+export type PageAndSize = {
+  page: number;
+  size: number;
+};
+
 export interface CardsContextProps {
   cardsList: CardList;
   getOneCard: (card: number) => void;
   search: string;
   setSearch: (value: string) => void;
   card: any;
+  getCards: () => void;
+  loading: boolean;
 }

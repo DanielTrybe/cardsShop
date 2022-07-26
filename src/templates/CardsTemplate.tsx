@@ -17,10 +17,13 @@ const useStyles = makeStyles({
 
 function CardsTemplate() {
   const classes = useStyles();
-  const { cardsList } = useCardsContext();
+  const { cardsList, loading } = useCardsContext();
+
   return (
     <Grid className={classes.cards}>
-      {cardsList?.data?.length > 0 ? (
+      {loading ? (
+        <p>carregando...</p>
+      ) : cardsList?.data?.length > 0 ? (
         cardsList.data.map((card, index) => (
           <Grid>
             <CardShow key={index} card={card} />

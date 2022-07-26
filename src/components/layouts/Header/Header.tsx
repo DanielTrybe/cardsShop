@@ -1,11 +1,11 @@
 import React from "react";
-import { Grid, Box } from "@mui/material";
+import { Grid, Box, Button } from "@mui/material";
 import { useStyles, CustomTextField } from "./style";
 import PkmLogo from "images/pkm-tcg.png";
 import { useCardsContext } from "hooks";
 
 export default function Header() {
-  const { search, setSearch } = useCardsContext();
+  const { search, setSearch, getCards } = useCardsContext();
 
   const classes = useStyles();
   return (
@@ -24,6 +24,7 @@ export default function Header() {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
+      <Button onClick={() => getCards()}>Buscar</Button>
     </Grid>
   );
 }
