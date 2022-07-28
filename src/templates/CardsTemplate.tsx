@@ -15,6 +15,8 @@ const useStyles = makeStyles({
   },
 });
 
+// criar icones e colocar nos ataques
+
 function CardsTemplate() {
   const classes = useStyles();
   const { cardsList, loading } = useCardsContext();
