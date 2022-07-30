@@ -20,8 +20,8 @@ function CardDetailsTemplate({ cardId }: CardID) {
       ) : (
         <Grid>
           <Box>
-            <Typography>{cardDetail.name}</Typography>
-            <img src={cardDetail.images.large} alt={cardDetail.name} />
+            <Typography>{cardDetail?.name}</Typography>
+            <img src={cardDetail?.images?.large} alt={cardDetail.name} />
           </Box>
         </Grid>
       )}
