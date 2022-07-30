@@ -117,10 +117,16 @@ export type PageAndSize = {
 
 export interface CardsContextProps {
   cardsList: CardList;
-  getOneCard: (card: number) => void;
+
   search: string;
   setSearch: (value: string) => void;
   card: any;
   getCards: () => void;
+  loading: boolean;
+}
+
+export interface CardsDetailsContextProps {
+  cardDetail: DataCards;
+  getOneCard: (card: string) => void;
   loading: boolean;
 }

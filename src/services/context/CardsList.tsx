@@ -20,19 +20,6 @@ const CardsProvider: React.FC<{ children: React.ReactNode }> = ({
   const [pageAndSize, setPageAndSize] = useState(initialize as PageAndSize);
   const [loading, setLoading] = useState(false);
 
-  const getOneCard = async (cardID: number) => {
-    setLoading(true);
-    // busca um card
-    try {
-      const response = await api.get(`cards/${cardID}`);
-      setCard(response.data);
-    } catch {
-      console.log("erro ao buscar carta");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const getCards = async () => {
     setLoading(true);
     // busca todas cardas com filtros
@@ -57,7 +44,6 @@ const CardsProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const values = {
     cardsList,
-    getOneCard,
     search,
     setSearch,
     card,
