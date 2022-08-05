@@ -16,7 +16,7 @@ function CardDetailsTemplate({ cardId }: CardID) {
   return (
     <Grid>
       {loading ? (
-        <h1>carregando</h1>
+        <p>carregando</p>
       ) : (
         <Grid>
           <Box>
