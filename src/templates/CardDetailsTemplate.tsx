@@ -49,7 +49,8 @@ function CardDetailsTemplate({ cardId }: CardID) {
                     marginTop: 15,
                     border: "1px solid black",
                     borderRadius: 5,
-                    width: 800,
+                    maxWidth: 800,
+                    wordBreak: "break-word",
                   }}
                 >
                   <Typography>{attack?.name}</Typography>
