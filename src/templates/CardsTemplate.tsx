@@ -15,6 +15,8 @@ const useStyles = makeStyles({
   },
 });
 
+// criar icones e colocar nos ataques
+
 function CardsTemplate() {
   const classes = useStyles();
   const { cardsList, loading } = useCardsContext();
@@ -25,8 +27,8 @@ function CardsTemplate() {
         <p>carregando...</p>
       ) : cardsList?.data?.length > 0 ? (
         cardsList.data.map((card, index) => (
-          <Grid>
-            <CardShow key={index} card={card} />
+          <Grid key={index}>
+            <CardShow card={card} />
           </Grid>
         ))
       ) : (

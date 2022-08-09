@@ -8,13 +8,14 @@ import {
   CardContent,
   IconButton,
 } from "@mui/material";
-
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { useNavigate } from "react-router-dom";
+import InfoIcon from "@mui/icons-material/Info";
 
 import { Card as CardType } from "services/context/types";
 import { PopoverCustom } from "components/Items";
 
 function CompactCard({ card }: CardType) {
+  const navigate = useNavigate();
   const content = (
     <Typography style={{ padding: 5 }}>
       {card.attacks.map((attack) => (
@@ -44,8 +45,11 @@ function CompactCard({ card }: CardType) {
       <Card sx={{ maxWidth: 345 }}>
         <CardHeader
           action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
+            <IconButton
+              onClick={() => navigate(`/${card.id}`)}
+              aria-label="settings"
+            >
+              <InfoIcon />
             </IconButton>
           }
           title={card.name}
