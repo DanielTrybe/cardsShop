@@ -23,6 +23,7 @@ export default function Header() {
         sx={{ m: 1, width: "100%" }}
         value={search}
         onChange={(e) => setSearch(e.target.value)}
+        data-testid="header-input"
       />
       <Button onClick={() => getCards()}>Buscar</Button>
     </Grid>
