@@ -13,3 +13,5 @@ describe('1 - Crie uma página de listagem de produtos', () => {
     expect(screen.getByTestId('header-input')).toBeInTheDocument();
   });
 });
+
+// proximos testes cards
