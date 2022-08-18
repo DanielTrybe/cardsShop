@@ -15,7 +15,7 @@ export default function Header() {
           width: 200,
         }}
       >
-        <img src={PkmLogo} width="100%" alt="logo" />
+        <img data-testid="header-logo" src={PkmLogo} width="100%" alt="logo" />
       </Box>
       <CustomTextField
         label="Search a Card"
@@ -25,7 +25,9 @@ export default function Header() {
         onChange={(e) => setSearch(e.target.value)}
         data-testid="header-input"
       />
-      <Button onClick={() => getCards()}>Buscar</Button>
+      <Button data-testid="header-btn" onClick={() => getCards()}>
+        Buscar
+      </Button>
     </Grid>
   );
 }
