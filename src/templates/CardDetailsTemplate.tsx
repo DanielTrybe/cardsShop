@@ -12,7 +12,7 @@ function CardDetailsTemplate({ cardId }: CardID) {
   useEffect(() => {
     getOneCard(cardId);
   }, []);
-
+  // .
   return (
     <Grid>
       {loading ? (
