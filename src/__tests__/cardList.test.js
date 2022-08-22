@@ -1,26 +1,34 @@
 import React from "react";
-import mockedCategoriesResult from "../__mocks__/cardList";
-import { render, waitFor } from "@testing-library/react";
-import { CardsContext } from "services/context/CardsList";
+
+import { render, screen } from "@testing-library/react";
+
 import App from "../App";
 
 describe("1 - Verifica se existe cards ao carregar a página", () => {
-  const getCards = CardsContext.it(
-    "Implementa a função `getCategories`",
-    () => {
-      const mockFetchPromise = Promise.resolve({
-        json: () => Promise.resolve(mockedCategoriesResult),
-      });
+  it(`A tela contém um card'`, () => {
+    render(<App />);
+    expect(screen.getByTestId("card-1")).toBeInTheDocument();
+  });
 
-      jest.spyOn(global, "fetch").mockImplementation(() => mockFetchPromise);
+  it(`A tela contém 10 cards'`, () => {
+    render(<App />);
+    expect(screen.getByTestId("card-1")).toBeInTheDocument();
+    expect(screen.getByTestId("card-2")).toBeInTheDocument();
+    expect(screen.getByTestId("card-3")).toBeInTheDocument();
+    expect(screen.getByTestId("card-4")).toBeInTheDocument();
+    expect(screen.getByTestId("card-5")).toBeInTheDocument();
+    expect(screen.getByTestId("card-6")).toBeInTheDocument();
+    expect(screen.getByTestId("card-7")).toBeInTheDocument();
+    expect(screen.getByTestId("card-8")).toBeInTheDocument();
+    expect(screen.getByTestId("card-9")).toBeInTheDocument();
+    expect(screen.getByTestId("card-10")).toBeInTheDocument();
+  });
 
-      return getCards().then((_cards) => {
-        expect(global.fetch).toHaveBeenCalled();
-        expect(global.fetch).toHaveBeenCalledWith(
-          "https://api.pokemontcg.io/v2/cards?pageSize=10&page=1"
-        );
-        expect(cardsList).toEqual(mockedCategoriesResult);
-      });
-    }
-  );
+  it(`O primeiro card contém os dados solicitados'`, () => {
+    render(<App />);
+    expect(screen.getByTestId("card-1")).toBeInTheDocument();
+    expect(screen.getByTestId("card-name")).toBeInTheDocument();
+    expect(screen.getByTestId("card-attacks")).toBeInTheDocument();
+    expect(screen.getByTestId("card-type")).toBeInTheDocument();
+  });
 });
