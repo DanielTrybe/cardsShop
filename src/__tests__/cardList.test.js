@@ -32,3 +32,5 @@ describe("1 - Verifica se existe cards ao carregar a página", () => {
     expect(screen.getByTestId("card-type")).toBeInTheDocument();
   });
 });
+
+// testes de click e um card mais a frente
